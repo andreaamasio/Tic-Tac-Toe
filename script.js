@@ -21,7 +21,7 @@ function Player(token) {
     return {token, getScore, increaseScore}
 }
 
-console.table(gameboard.board)
+
 
 
 function GameController(
@@ -37,12 +37,15 @@ function GameController(
     }
 
     const getActivePlayer = () => activePlayer
-    const addToken = (player) => {
-
-    } 
+    const addToken = (indexRow,indexColumn) => {
+        let tokenTurn = getActivePlayer().token
+        gameboard.board[indexRow][indexColumn]=tokenTurn
+    }
+    return {switchTurn, addToken} 
   }
 
-
-
+const game = GameController()
+game.addToken(1,2)
+console.table(gameboard.board)
 
 

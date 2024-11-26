@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+h2{
+    text-align: center;
+    margin: 3%
+}
+
+.cell-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 300px;
+    margin: auto;
+    
+
+}
+.cell {
+    
+    box-shadow: 1px black;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 0 0 1px;
+    
+
+}
