@@ -6,9 +6,10 @@ const gameboard = (function Gameboard() {
     const board=[]
 
     for (let i=0;i<rows;i++){
-        board[i] = [];
+        // board[i] = [];
         for (let j=0;j<columns;j++){
-            board[i].push(null)
+            // board[i].push(null)
+            board.push(null)
         }
     }
     return {board}
@@ -37,15 +38,16 @@ function GameController(
     }
 
     const getActivePlayer = () => activePlayer
-    const addToken = (indexRow,indexColumn) => {
+    const addToken = (index) => {
         let tokenTurn = getActivePlayer().token
-        gameboard.board[indexRow][indexColumn]=tokenTurn
+        gameboard.board[index]=tokenTurn
     }
     return {switchTurn, addToken} 
   }
 
 const game = GameController()
-game.addToken(1,2)
+game.addToken(1)
 console.table(gameboard.board)
+
 
 
