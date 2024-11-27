@@ -38,16 +38,38 @@ function GameController(
     }
 
     const getActivePlayer = () => activePlayer
-    const addToken = (index) => {
+    const addToken = function (event) {
         let tokenTurn = getActivePlayer().token
+        let index=parseInt(String(event.target.id).charAt(5))
+        console.log(index)
         gameboard.board[index]=tokenTurn
+        console.table(gameboard.board)
     }
+    const cells = document.querySelectorAll(".cell")
+    
+    cells.forEach((cell)=> {
+        
+        cell.addEventListener('click',addToken)
+    })
     return {switchTurn, addToken} 
   }
 
+
 const game = GameController()
-game.addToken(1)
+
 console.table(gameboard.board)
+// const cell_1=document.querySelector("#cell-1")
+// cell_1.addEventListener('click',(event)=>
+
+
+// console.log(event.target.id))
+
+
+
+
+
+
+
 
 
 
