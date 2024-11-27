@@ -36,20 +36,40 @@ function GameController(
             activePlayer = playerO
         } else activePlayer = playerX
     }
+    const checkWin = function(){
+        if (
+            gameboard.board[0]===gameboard.board[1]===gameboard.board[2] ||
+            gameboard.board[3]===gameboard.board[4]===gameboard.board[5] ||
+            gameboard.board[6]===gameboard.board[7]===gameboard.board[8] ||
+            gameboard.board[0]===gameboard.board[3]===gameboard.board[6] ||
+            gameboard.board[1]===gameboard.board[4]===gameboard.board[7] ||
+            gameboard.board[2]===gameboard.board[5]===gameboard.board[8] ||
+            gameboard.board[0]===gameboard.board[4]===gameboard.board[8] ||
+            gameboard.board[6]===gameboard.board[4]===gameboard.board[2]
+        ) {
+            declareWinner()
+        }
+    }
+    const declareWinner = function(){
+        console.log("winner!")
+    }
 
     const getActivePlayer = () => activePlayer
     const addToken = function (event) {
         let tokenTurn = getActivePlayer().token
         let index=parseInt(String(event.target.id).charAt(5))
-        console.log(index)
+        
         gameboard.board[index]=tokenTurn
+        event.target.textContent=tokenTurn
+        switchTurn()
         console.table(gameboard.board)
+        checkWin()
     }
     const cells = document.querySelectorAll(".cell")
     
     cells.forEach((cell)=> {
         
-        cell.addEventListener('click',addToken)
+        cell.addEventListener('click',addToken, {once:true})
     })
     return {switchTurn, addToken} 
   }
