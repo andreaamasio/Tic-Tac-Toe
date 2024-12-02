@@ -37,21 +37,22 @@ function GameController(
         } else activePlayer = playerX
     }
     const checkWin = function(){
+        
         if (
-            gameboard.board[0]===gameboard.board[1]===gameboard.board[2] ||
-            gameboard.board[3]===gameboard.board[4]===gameboard.board[5] ||
-            gameboard.board[6]===gameboard.board[7]===gameboard.board[8] ||
-            gameboard.board[0]===gameboard.board[3]===gameboard.board[6] ||
-            gameboard.board[1]===gameboard.board[4]===gameboard.board[7] ||
-            gameboard.board[2]===gameboard.board[5]===gameboard.board[8] ||
-            gameboard.board[0]===gameboard.board[4]===gameboard.board[8] ||
-            gameboard.board[6]===gameboard.board[4]===gameboard.board[2]
-        ) {
+            gameboard.board[0]===gameboard.board[1]&&gameboard.board[1]===gameboard.board[2]&&gameboard.board[1]!=null ||
+            gameboard.board[3]===gameboard.board[4]&&gameboard.board[4]===gameboard.board[5]&&gameboard.board[4]!=null ||
+            gameboard.board[6]===gameboard.board[7]&&gameboard.board[7]===gameboard.board[8]&&gameboard.board[7]!=null ||
+            gameboard.board[0]===gameboard.board[3]&&gameboard.board[3]===gameboard.board[6]&&gameboard.board[3]!=null ||
+            gameboard.board[1]===gameboard.board[4]&&gameboard.board[4]===gameboard.board[7]&&gameboard.board[4]!=null ||
+            gameboard.board[2]===gameboard.board[5]&&gameboard.board[5]===gameboard.board[8]&&gameboard.board[5]!=null ||
+            gameboard.board[0]===gameboard.board[4]&&gameboard.board[4]===gameboard.board[8]&&gameboard.board[4]!=null ||
+            gameboard.board[6]===gameboard.board[4]&&gameboard.board[4]===gameboard.board[2]&&gameboard.board[4]!=null
+        ) {            
             declareWinner()
-        }
+        } 
     }
     const declareWinner = function(){
-        console.log("winner!")
+        console.log("winner yuhu!")
     }
 
     const getActivePlayer = () => activePlayer
@@ -59,7 +60,7 @@ function GameController(
         let tokenTurn = getActivePlayer().token
         let index=parseInt(String(event.target.id).charAt(5))
         
-        gameboard.board[index]=tokenTurn
+        gameboard.board[index]=tokenTurn.trim()
         event.target.textContent=tokenTurn
         switchTurn()
         console.table(gameboard.board)
