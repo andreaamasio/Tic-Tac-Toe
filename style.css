@@ -23,22 +23,25 @@ body {
 
 h2 {
     margin-bottom: 20px;
-    font-size: 48px;
+    font-size: 48px;    
 }
 
 .cell-container {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .cell {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 48px;
+    font-size: 2rem;
     font-weight: bold;
     border: 2px solid black;
+    
 }
 
 /* Remove borders for outer edges */
@@ -65,13 +68,38 @@ h2 {
 .cell:nth-child(9) {
     border-bottom: none;
 }
-.players{
+.players {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
 }
 label {
     display: grid;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
 }
 label input {
-    
+    font-size: 1.2rem;
+    font-family: "Permanent Marker", cursive, Arial, sans-serif;
+    text-align: center;
+    border-radius: 12px;
+    outline: 1px solid black;
+    border: none;
+
+}
+.display {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    min-height: 1.5rem;
+}
+#restart {
+    font-size: 1.2rem;
+    font-family: "Permanent Marker", cursive, Arial, sans-serif;
+    text-align: center;
+    border-radius: 12px;
+    outline: 1px solid black;
+    border: none;
+    min-width: 50%;
+    min-height: 20%;
 }

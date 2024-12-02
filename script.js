@@ -19,7 +19,10 @@ function Player(token) {
     let score=0
     const getScore = () => score
     const increaseScore = () => score++
-    return {token, getScore, increaseScore}
+    
+    let playerName=token
+    console.log(playerName)
+    return {token, playerName, getScore, increaseScore}
 }
 
 
@@ -30,11 +33,15 @@ function GameController(
     playerO=Player('O')
   ){
     let activePlayer=playerX
-
+    
+    const display=document.querySelector(".display")
+    
     const switchTurn = () => {
         if (activePlayer === playerX) {
             activePlayer = playerO
         } else activePlayer = playerX
+        
+        display.textContent=`It's the turn of ${activePlayer.playerName}`
     }
     const checkWin = function(){
         
@@ -52,7 +59,17 @@ function GameController(
         } 
     }
     const declareWinner = function(){
-        console.log("winner yuhu!")
+        console.log(`${activePlayer.playerName} won! Play again?`)
+    }
+    const getNames = function(){
+        const inputX=document.querySelector("#playerX")
+        const inputO=document.querySelector("#playerO")
+        if (inputX.value!=""){
+            playerX.playerName=inputX.value
+        }
+        if (inputO.value!=""){
+            playerO.playerName=inputO.value
+        }
     }
 
     const getActivePlayer = () => activePlayer
@@ -62,9 +79,11 @@ function GameController(
         
         gameboard.board[index]=tokenTurn.trim()
         event.target.textContent=tokenTurn
-        switchTurn()
-        console.table(gameboard.board)
+                
         checkWin()
+        getNames()
+        switchTurn()
+        
     }
     const cells = document.querySelectorAll(".cell")
     
@@ -72,7 +91,7 @@ function GameController(
         
         cell.addEventListener('click',addToken, {once:true})
     })
-    return {switchTurn, addToken} 
+    return {switchTurn, addToken, activePlayer} 
   }
 
 
