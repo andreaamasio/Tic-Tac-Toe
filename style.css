@@ -65,3 +65,13 @@ h2 {
 .cell:nth-child(9) {
     border-bottom: none;
 }
+.players{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+label {
+    display: grid;
+}
+label input {
+    
+}
