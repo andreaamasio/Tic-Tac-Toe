@@ -21,7 +21,7 @@ function Player(token) {
     const increaseScore = () => score++
     
     let playerName=token
-    console.log(playerName)
+    
     return {token, playerName, getScore, increaseScore}
 }
 
@@ -35,6 +35,9 @@ function GameController(
     let activePlayer=playerX
     
     const display=document.querySelector(".display")
+    const restartButton=document.querySelector("#restart")
+    const inputX=document.querySelector("#playerX")
+    const inputO=document.querySelector("#playerO")
     
     const switchTurn = () => {
         if (activePlayer === playerX) {
@@ -62,8 +65,7 @@ function GameController(
         console.log(`${activePlayer.playerName} won! Play again?`)
     }
     const getNames = function(){
-        const inputX=document.querySelector("#playerX")
-        const inputO=document.querySelector("#playerO")
+        
         if (inputX.value!=""){
             playerX.playerName=inputX.value
         }
@@ -91,18 +93,21 @@ function GameController(
         
         cell.addEventListener('click',addToken, {once:true})
     })
-    return {switchTurn, addToken, activePlayer} 
+    const RestartGame=function(){
+        location.reload()
+        
+    }
+    restartButton.addEventListener("click",RestartGame)
+
+    return {switchTurn, addToken, activePlayer, RestartGame} 
+
+    
   }
 
 
-const game = GameController()
-
-console.table(gameboard.board)
-// const cell_1=document.querySelector("#cell-1")
-// cell_1.addEventListener('click',(event)=>
+let game = GameController()
 
 
-// console.log(event.target.id))
 
 
 
