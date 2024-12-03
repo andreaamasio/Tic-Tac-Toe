@@ -105,4 +105,6 @@ label input {
     min-width: 50%;
     min-height: 20%;
     margin-bottom: 20px;
+    color: black;
+    background-color: white;
 }
