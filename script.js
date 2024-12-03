@@ -38,13 +38,18 @@ function GameController(
     const restartButton=document.querySelector("#restart")
     const inputX=document.querySelector("#playerX")
     const inputO=document.querySelector("#playerO")
-    
+    const cells = document.querySelectorAll(".cell")
+
     const switchTurn = () => {
         if (activePlayer === playerX) {
             activePlayer = playerO
         } else activePlayer = playerX
-        
+        if (display.textContent.includes("Play again?")){
+            
+        } 
+        else {
         display.textContent=`It's the turn of ${activePlayer.playerName}`
+    }
     }
     const checkWin = function(){
         
@@ -62,7 +67,11 @@ function GameController(
         } 
     }
     const declareWinner = function(){
-        console.log(`${activePlayer.playerName} won! Play again?`)
+        display.textContent=`${activePlayer.playerName} won! Play again?`
+        cells.forEach((cell)=> {        
+            cell.removeEventListener('click',addToken)
+        })
+
     }
     const getNames = function(){
         
@@ -87,10 +96,9 @@ function GameController(
         switchTurn()
         
     }
-    const cells = document.querySelectorAll(".cell")
     
-    cells.forEach((cell)=> {
-        
+    
+    cells.forEach((cell)=> {        
         cell.addEventListener('click',addToken, {once:true})
     })
     const RestartGame=function(){
